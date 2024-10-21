@@ -13,8 +13,10 @@ public:
 
     void addItem(Item *item);
     void RemoveItem(const char* itemName);
+    void FindObj(const char* itemName);
 
 protected:
     std::vector<Item*>::iterator FindItem(const char* itemName);
 };
 
+#endif

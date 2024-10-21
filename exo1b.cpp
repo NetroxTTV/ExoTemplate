@@ -4,15 +4,21 @@
 #include <ostream>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "inventaire.h"
 #include "item.h"
-
-
-
 
 int main() {
 
-    const Item chat("meow", 10);
-    const Item liam("liam", 69);
+    Inventaire inventory;
+
+    Item* chat = new Item("meow", 10);
+    Item* liam = new Item("liam", 69);
+
+    inventory.addItem(chat);
+    inventory.addItem(liam);
+
+    inventory.FindObj("liam");
 
 
     return 0;
