@@ -18,7 +18,7 @@ public:
     void FindObj(const char* itemName);
     void OrderInv();
     void FilterInv(std::function<bool(Item*)> filter);
-    void ShowInv();
+    void ShowInv(bool e);
 
     void StatsInv(float seuil);
 

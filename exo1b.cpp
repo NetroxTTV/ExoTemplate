@@ -22,8 +22,8 @@ int main() {
     inventory.addItem(liam);
 
     inventory.FilterInv([](Item* pItem1){return pItem1->m_poidsObj < 5.0f;});
-    inventory.ShowInv();
-    inventory.StatsInv(15.0f);
+    inventory.ShowInv(true);
+    inventory.StatsInv(5.0f);
     return 0;
 }
 

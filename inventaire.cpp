@@ -28,13 +28,15 @@ void Inventaire::OrderInv() {
     std::sort(m_inv.begin(), m_inv.end(), [](Item* pItem1, Item* pItem2){return pItem1->m_poidsObj < pItem2->m_poidsObj;});
 }
 
-void Inventaire::ShowInv() {
+void Inventaire::ShowInv(bool e) {
     m_poidsTotal = 0;
+
     for ( int i =0; i < m_inv.size(); i++ ) {
         m_poidsTotal += m_inv[i]->m_poidsObj;
-        std::cout << m_inv[i]->m_nameObj << " " << m_inv[i]->m_poidsObj << std::endl;
+        if (e == true) {
+            std::cout << m_inv[i]->m_nameObj << " " << m_inv[i]->m_poidsObj << std::endl;
+        }
     }
-    std::cout << "\nPOIDS TOTAL : " << m_poidsTotal <<std::endl;
 }
 
 void Inventaire::FilterInv(std::function<bool(Item*)> filter) {
@@ -43,18 +45,18 @@ void Inventaire::FilterInv(std::function<bool(Item*)> filter) {
 }
 
 void Inventaire::StatsInv(float seuil) {
-
+    ShowInv(false);
     // POIDS MOYEN
     int sizeinv = m_inv.size();
-    std::cout << m_poidsTotal/sizeinv << std::endl;
+    std::cout << "poids moyen : " << m_poidsTotal/sizeinv << std::endl;
     //
 
     // POIDS TOTAL
-    std::cout << m_poidsTotal;
+    std::cout << "poids total : " <<  m_poidsTotal;
 
     //  Nombre d'items pesant plus qu'un seuil donné
     FilterInv([seuil](Item* pItem1){return pItem1->m_poidsObj < seuil;});
-    std::cout << m_inv.size();
+    std::cout << "\nNB Item : " << m_inv.size() << std::endl;
 
 }
 
